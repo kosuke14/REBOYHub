@@ -55,6 +55,7 @@ local command_37 = Instance.new("TextLabel")
 local command_38 = Instance.new("TextLabel")
 local command_39 = Instance.new("TextLabel")
 local command_40 = Instance.new("TextLabel")
+local command_41 = Instance.new("TextLabel")
 local Types = Instance.new("Frame")
 local top_2 = Instance.new("TextLabel")
 local scroll = Instance.new("ScrollingFrame")
@@ -747,6 +748,19 @@ command_40.TextScaled = true
 command_40.TextSize = 14.000
 command_40.TextWrapped = true
 
+command_41.Name = "command"
+command_41.Parent = sug
+command_41.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+command_41.BackgroundTransparency = 0.500
+command_41.BorderColor3 = Color3.fromRGB(0, 0, 0)
+command_41.Size = UDim2.new(1, 0, 0, 30)
+command_41.Font = Enum.Font.SourceSans
+command_41.Text = "music/playername or me or others or all/id -- Play Audio for custom player. (BarCMD)"
+command_41.TextColor3 = Color3.fromRGB(0, 0, 0)
+command_41.TextScaled = true
+command_41.TextSize = 14.000
+command_41.TextWrapped = true
+
 Types.Name = "Types"
 Types.Parent = AposAdminCmdBar
 Types.Active = true
@@ -1342,7 +1356,7 @@ InBar_2.Size = UDim2.new(0, 0, 1, 0)
 
 -- Scripts:
 
-local function QWFKX_fake_script() -- Frame.barscript 
+local function HQGNSR_fake_script() -- Frame.barscript 
 	local script = Instance.new('LocalScript', Frame)
 
 	local TweenService = game:GetService("TweenService")
@@ -1363,8 +1377,8 @@ local function QWFKX_fake_script() -- Frame.barscript
 	end)
 	
 end
-coroutine.wrap(QWFKX_fake_script)()
-local function PRZCDE_fake_script() -- Frame.Main 
+coroutine.wrap(HQGNSR_fake_script)()
+local function UBICQ_fake_script() -- Frame.Main 
 	local script = Instance.new('LocalScript', Frame)
 
 	local scroll = script.Parent.Parent.sug
@@ -1396,6 +1410,19 @@ local function PRZCDE_fake_script() -- Frame.Main
 	bar.Changed:Connect(UpdateSearch)
 	
 	-- Command
+	function split(str, ts)
+		-- 引数がないときは空tableを返す
+		if ts == nil then return {} end
+	
+		local t = {}; 
+		local i = 1
+		for s in string.gmatch(str, "([^"..ts.."]+)") do
+			t[i] = s
+			i = i + 1
+		end
+	
+		return t
+	end
 	
 	function showsug(bool)
 		if bool == true then
@@ -1425,6 +1452,34 @@ local function PRZCDE_fake_script() -- Frame.Main
 				script.Parent.Parent.Types.Visible = true
 			elseif bar.Text == "types/hide" then
 				script.Parent.Parent.Types.Visible = false
+			elseif string.sub(bar.Text,1,6) == "music/" then
+				local splitted = split(bar.Text,"/")
+				local players = {}
+				local plrstr = string.lower(splitted[2])
+				if plrstr == "me" then
+					table.insert(players,game.Players.LocalPlayer)
+				elseif plrstr == "others" then
+					for i,v in pairs(game.Players:GetPlayers()) do
+						if v ~= game.Players.LocalPlayer then
+							table.insert(players,v)
+						end
+					end
+				elseif plrstr == "all" then
+					for i,v in pairs(game.Players:GetPlayers()) do
+						table.insert(players,v)
+					end
+				else
+					for i,v in pairs(game.Players:GetPlayers()) do
+						if string.find(plrstr,string.lower(v.Name)) then
+							table.insert(players,v)
+						end
+					end
+				end
+				for i,v in pairs(players) do
+					if v.gamestats.Plate.Value ~= nil then
+						workspace.RemoteEvents.AddSound:FireServer("rbxassetid://"..splitted[3],v.gamestats.Plate.Value,"D=9Vb7aMuZt!8aMH")
+					end
+				end
 			else
 				local suc,err = pcall(function()
 					game.Players:Chat(bar.Text)
@@ -1444,8 +1499,8 @@ local function PRZCDE_fake_script() -- Frame.Main
 		end
 	end)
 end
-coroutine.wrap(PRZCDE_fake_script)()
-local function CKEKTWT_fake_script() -- Types.typesscript 
+coroutine.wrap(UBICQ_fake_script)()
+local function YRORKS_fake_script() -- Types.typesscript 
 	local script = Instance.new('LocalScript', Types)
 
 	script.Parent.Draggable = true
@@ -1514,4 +1569,4 @@ local function CKEKTWT_fake_script() -- Types.typesscript
 	end)
 	
 end
-coroutine.wrap(CKEKTWT_fake_script)()
+coroutine.wrap(YRORKS_fake_script)()
