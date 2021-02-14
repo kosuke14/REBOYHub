@@ -792,7 +792,7 @@ Tool.Size = UDim2.new(1, 0, 0, 235)
 
 TypeName.Name = "TypeName"
 TypeName.Parent = Tool
-TypeName.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+TypeName.BackgroundColor3 = Color3.fromRGB(85, 255, 127)
 TypeName.BorderSizePixel = 0
 TypeName.Size = UDim2.new(1, 0, 0, 25)
 TypeName.Font = Enum.Font.SourceSansLight
@@ -904,7 +904,7 @@ Round.Size = UDim2.new(1, 0, 0, 375)
 
 TypeName_2.Name = "TypeName"
 TypeName_2.Parent = Round
-TypeName_2.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+TypeName_2.BackgroundColor3 = Color3.fromRGB(85, 255, 127)
 TypeName_2.BorderSizePixel = 0
 TypeName_2.Size = UDim2.new(1, 0, 0, 25)
 TypeName_2.Font = Enum.Font.SourceSansLight
@@ -1016,7 +1016,7 @@ Delete.Size = UDim2.new(1, 0, 0, 1075)
 
 TypeName_3.Name = "TypeName"
 TypeName_3.Parent = Delete
-TypeName_3.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+TypeName_3.BackgroundColor3 = Color3.fromRGB(85, 255, 127)
 TypeName_3.BorderSizePixel = 0
 TypeName_3.Size = UDim2.new(1, 0, 0, 25)
 TypeName_3.Font = Enum.Font.SourceSansLight
@@ -1341,7 +1341,7 @@ InBar_2.Size = UDim2.new(0, 0, 1, 0)
 
 -- Scripts:
 
-local function OMDUVB_fake_script() -- Frame.barscript 
+local function QWFKX_fake_script() -- Frame.barscript 
 	local script = Instance.new('LocalScript', Frame)
 
 	local TweenService = game:GetService("TweenService")
@@ -1362,8 +1362,8 @@ local function OMDUVB_fake_script() -- Frame.barscript
 	end)
 	
 end
-coroutine.wrap(OMDUVB_fake_script)()
-local function FXMSG_fake_script() -- Frame.Main 
+coroutine.wrap(QWFKX_fake_script)()
+local function PRZCDE_fake_script() -- Frame.Main 
 	local script = Instance.new('LocalScript', Frame)
 
 	local scroll = script.Parent.Parent.sug
@@ -1443,8 +1443,8 @@ local function FXMSG_fake_script() -- Frame.Main
 		end
 	end)
 end
-coroutine.wrap(FXMSG_fake_script)()
-local function UZEG_fake_script() -- Types.typesscript 
+coroutine.wrap(PRZCDE_fake_script)()
+local function CKEKTWT_fake_script() -- Types.typesscript 
 	local script = Instance.new('LocalScript', Types)
 
 	script.Parent.Draggable = true
@@ -1492,6 +1492,13 @@ local function UZEG_fake_script() -- Types.typesscript
 				end
 			end
 		end
+		for i,v in ipairs(script.Parent.scroll:GetDescendants()) do
+			if v:IsA("UIListLayout") then
+				if v.Parent:IsA("Frame") then
+					v.Parent.Size = UDim2.new(1,0,0,v.AbsoluteContentSize.Y)
+				end
+			end
+		end
 		script.Parent.scroll.CanvasSize = UDim2.new(0,0,0,script.Parent.scroll.UIListLayout.AbsoluteContentSize.Y)
 	end
 	SearchUpd()
@@ -1506,4 +1513,4 @@ local function UZEG_fake_script() -- Types.typesscript
 	end)
 	
 end
-coroutine.wrap(UZEG_fake_script)()
+coroutine.wrap(CKEKTWT_fake_script)()
