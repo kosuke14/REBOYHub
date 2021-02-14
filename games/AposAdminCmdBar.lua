@@ -1,3 +1,4 @@
+-- LOADSTRING: loadstring(game:HttpGet("https://raw.githubusercontent.com/kosuke14/REBOYHub/main/games/AposAdminCmdBar.lua", true))()
 -- AposAdmin Command Bar
 
 -- Instances:
