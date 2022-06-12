@@ -1,4 +1,4 @@
---// minified virtual loadstring for RBXLua (2018 ~)
+--// minified virtual loadstring for RBXLua (can be used at 2019 ~ 2022)
 -- use for obfuscator (works in lua 5.1)
 
 local variable = "loadstring"
